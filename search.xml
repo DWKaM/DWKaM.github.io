@@ -3,10 +3,30 @@
   <entry>
     <title>破解c30学习平板</title>
     <url>/2023/04/30/%E7%A0%B4%E8%A7%A3c30%E5%AD%A6%E4%B9%A0%E5%B9%B3%E6%9D%BF/</url>
-    <content><![CDATA[<h1 id="破解c30学习平板"><a href="#破解c30学习平板" class="headerlink" title="破解c30学习平板"></a>破解c30学习平板</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="For-Windows"><a href="#For-Windows" class="headerlink" title="For Windows"></a>For Windows</h3><ul>
-<li>驱动：</li>
-<li>MTKClient</li>
-</ul>
-<h3 id="For-Ubuntu-x2F-De"><a href="#For-Ubuntu-x2F-De" class="headerlink" title="For Ubuntu&#x2F;De"></a>For Ubuntu&#x2F;De</h3><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</span><br></pre></td></tr></table></figure>]]></content>
+    <content><![CDATA[<h1 id="破解c30学习平板"><a href="#破解c30学习平板" class="headerlink" title="破解c30学习平板"></a>破解c30学习平板</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>强解BL🔒，提取<code>super.img</code>和<code>boot.img</code>，解包<code>super.img</code>删除监管APP然后打包，使用<code>Magisk</code>修补<code>boot.img</code>，将两者刷回，清除<code>userdata</code>，开机，结束战斗。</p>
+<h2 id="正片"><a href="#正片" class="headerlink" title="正片"></a>正片</h2><h3 id="For-Windows"><a href="#For-Windows" class="headerlink" title="For Windows"></a>For Windows</h3><ol>
+<li><p>安装驱动  </p>
+</li>
+<li><p>安装 <a href="https://www.python.org/"><code>python3</code></a> (安装时勾选Add to PATH) 和 <a href="https://git-scm.com/download/win"><code>git</code></a>  </p>
+</li>
+<li><p>在硬盘中找一块舒适的地方，执行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/bkerler/mtkclient</span><br><span class="line">cd mtkclient</span><br><span class="line">pip3 install -r requirements.txt</span><br></pre></td></tr></table></figure></li>
+<li><p>清理</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python mtk e metadata,userdata,md_udc</span><br></pre></td></tr></table></figure>
+<p>将平板关机，按住三个键的同时用数据线将其与PC连接<br>出现如图所示即成功👇</p>
+</li>
+<li><p>提取boot、vbmeta、super</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python mtk r boot,vbmeta,super boot.img,vbmeta.img.super.img</span><br></pre></td></tr></table></figure></li>
+<li><p>使用Magisk修补boot.img </p>
+</li>
+<li><p>接下来修改super.img。<br>准备一个<code>Ubuntu</code>环境 ( WSL &#x2F; 虚拟机 &#x2F; Cygwin ) 并打开<br> 找一块舒适的地方，执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://gitee.com/yeliqin666/TIK.git</span><br><span class="line">cd TIK</span><br><span class="line">sudo sh run.sh</span><br></pre></td></tr></table></figure></li>
+<li><p>新建项目super，将你的suer.img移到项目文件夹中</p>
+</li>
+</ol>
+<h3 id="For-Linux-x2F-Mac-OS"><a href="#For-Linux-x2F-Mac-OS" class="headerlink" title="For Linux &#x2F; Mac OS"></a>For Linux &#x2F; Mac OS</h3><h4 id="For-Debian-x2F-Ubuntu-recommended"><a href="#For-Debian-x2F-Ubuntu-recommended" class="headerlink" title="For Debian&#x2F;Ubuntu(recommended)"></a>For Debian&#x2F;Ubuntu(recommended)</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install python3 git libusb-1.0-0 python3-pip</span><br></pre></td></tr></table></figure>
+<h4 id="For-ArchLinux"><a href="#For-ArchLinux" class="headerlink" title="For ArchLinux"></a>For ArchLinux</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(sudo) pacman -S  python python-pip git libusb</span><br></pre></td></tr></table></figure>
+<h4 id="Grab-files"><a href="#Grab-files" class="headerlink" title="Grab files"></a>Grab files</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/bkerler/mtkclient</span><br><span class="line">cd mtkclient</span><br><span class="line">pip3 install -r requirements.txt</span><br><span class="line">python3 setup.py build</span><br><span class="line">python3 setup.py install</span><br></pre></td></tr></table></figure>
+<h4 id="Install-rules"><a href="#Install-rules" class="headerlink" title="Install rules"></a>Install rules</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo usermod -a -G plugdev $USER</span><br><span class="line">sudo usermod -a -G dialout $USER</span><br><span class="line">sudo cp Setup/Linux/*.rules /etc/udev/rules.d</span><br><span class="line">sudo udevadm control -R</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
 </search>
