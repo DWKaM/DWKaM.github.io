@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>破解c30学习平板</title>
+    <url>/2023/04/30/%E7%A0%B4%E8%A7%A3c30%E5%AD%A6%E4%B9%A0%E5%B9%B3%E6%9D%BF/</url>
+    <content><![CDATA[<h1 id="破解c30学习平板"><a href="#破解c30学习平板" class="headerlink" title="破解c30学习平板"></a>破解c30学习平板</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="For-Windows"><a href="#For-Windows" class="headerlink" title="For Windows"></a>For Windows</h3><ul>
+<li>驱动：</li>
+<li>MTKClient</li>
+</ul>
+<h3 id="For-Ubuntu-x2F-De"><a href="#For-Ubuntu-x2F-De" class="headerlink" title="For Ubuntu&#x2F;De"></a>For Ubuntu&#x2F;De</h3><figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+</search>
